@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% load static %}
+{% block title %}
+	Home page
+{% endblock title %}
+
+{% block content %}
+	<h1>User Upload</h1>
+
+
+<form action=""  method="post" enctype="multipart/form-data" data-url="{% url "user_upload" %}">
+	{% csrf_token %}
+
+	<div class="form-group">
+		<label for="{{form.name.id_for_label}}">{{form.name.label}}</label>
+		{% render_field form.name class="form-control" %}
+	</div>
+	{% render_field form.photo class="form-control" style="display: none;" %}
+
+	<div class="card" style="width: 18rem;">
+	  <img class="card-img-top" src="{{user_photo_url}}" alt="Card image cap">
+	  
+	  <div class="card-body">
+	    <h5 class="card-title">Card title</h5>
+			
+	    <div id="js-upload" class="btn btn-danger"><i class="fa fa-camera upload-button"></i> Upload</div>
+	  </div>
+
+	</div>
+	<br>
+	<button class="btn btn-primary">Save</button>
+</form>
+
+
+{% endblock content %}
+
+{% block scripts %}
+	<script>
+		$(function(){
+
+			var readURL = function(input) {
+        		if (input.files && input.files[0]) {
+            		var reader = new FileReader();
+
+	            	reader.onload = function (e) {
+	               		$('.card-img-top').attr('src', e.target.result);
+	            	}
+	    
+	          		reader.readAsDataURL(input.files[0]);
+	        	}
+	   		}
+	    
+
+		    $("#id_photo").on('change', function(){
+		        readURL(this);
+		    });
+		    
+		    $("#js-upload").on('click', function() {
+		       $("#id_photo").click();
+		    });
+
+		});
+
+	</script>
+{% endblock scripts %}
