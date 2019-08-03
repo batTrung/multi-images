@@ -1,4 +1,4 @@
-#!/home/trungbat/Pictures/project/env/bin/python
+#!/home/trungbat/Desktop/multi_images/env/bin/python
 
 import sys
 import getopt

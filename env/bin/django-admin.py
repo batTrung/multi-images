@@ -1,4 +1,4 @@
-#!/home/trungbat/Pictures/project/env/bin/python3
+#!/home/trungbat/Desktop/multi_images/env/bin/python3
 from django.core import management
 
 if __name__ == "__main__":
