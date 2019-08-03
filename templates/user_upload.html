@@ -7,6 +7,7 @@
 {% endblock title %}
 
 {% block content %}
+
 	<h1>User Upload</h1>
 
 
@@ -22,9 +23,7 @@
 	<div class="card" style="width: 18rem;">
 	  <img class="card-img-top" src="{{user_photo_url}}" alt="Card image cap">
 	  
-	  <div class="card-body">
-	    <h5 class="card-title">Card title</h5>
-			
+	  <div class="card-body">			
 	    <div id="js-upload" class="btn btn-danger"><i class="fa fa-camera upload-button"></i> Upload</div>
 	  </div>
 
@@ -32,7 +31,6 @@
 	<br>
 	<button class="btn btn-primary">Save</button>
 </form>
-
 
 {% endblock content %}
 
@@ -43,11 +41,9 @@
 			var readURL = function(input) {
         		if (input.files && input.files[0]) {
             		var reader = new FileReader();
-
 	            	reader.onload = function (e) {
 	               		$('.card-img-top').attr('src', e.target.result);
 	            	}
-	    
 	          		reader.readAsDataURL(input.files[0]);
 	        	}
 	   		}

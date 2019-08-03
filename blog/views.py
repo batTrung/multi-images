@@ -17,7 +17,6 @@ class BasicUploadView(View):
 
 	def post(self, request):
 		form = PhotoForm(self.request.POST, self.request.FILES)
-
 		if form.is_valid():
 			photo = form.save()
 			photos= Photo.objects.all()
